@@ -10,16 +10,24 @@
     src: url(shooting-star.ttf);
   }
 
+  @font-face {
+    font-family: twinkle-sunday;
+    src: url(FabeloKids-Regular.ttf);
+  }
+
 .bg, .contentBg {
-    background-image: url("../images/starbg.jpg");
+    background-image: url("../images/space-bg-small.jpg");
     background-repeat: no-repeat;
     background-size: 2000px auto;
 }
 
 .bg {
     background-position: center top;
-    padding: 100px 300px;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrap {
@@ -35,18 +43,27 @@
     padding: 30px;
     margin: 0 auto;
     background-position: center -100px;
-    filter: blur(7px);
-    -webkit-filter: blur(7px);
-
+    filter: blur(14px);
 }
 
 .content {
     border: 2px solid rgba(255, 255, 255, 0.361);
     border-radius: 10px;
-    padding: 50px;
+    padding: 20px 50px;
     margin: 0 auto;
     position: relative;
-    height: 70vh;
+    background-color: rgba(0, 0, 0, 0.505);
+    width: 1400px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1400px) {
+    .content {
+        width: 95vw;
+        height: 85vh;
+    }
 }
 
 h1 {
@@ -54,11 +71,24 @@ h1 {
     font-family: shooting-star, sans-serif;
     font-weight: 300;
     letter-spacing: 3px;
+    justify-self: center;
+    margin-bottom: 40px;
 }
 
+h2 {
+    font-family: twinkle-sunday, sans-serif;
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #B3FFB3;
+    text-shadow: 0px 0px 8px rgba(179,255,179,0.8);
+}
+
+
 p {
-    color: rgba(223, 222, 222, 0.853);
-    font-family: "Red Hat Text", sans-serif;
+    color: rgba(255, 255, 255, 0.853);
+    font-family: twinkle-sunday, sans-serif;
+    font-size: 22px;
     line-height: 1.4;
     letter-spacing: 0.7px;
 }
@@ -73,18 +103,20 @@ p {
 
 #mainMenu ul li {
     position: relative; /* Gör så att vi kan positionera pseudo-element */
+    margin: 0 2px;
 }
 
 /* Inaktiva länkar */
 #mainMenu ul li a {
-    font-family: "Codystar", sans-serif;
+    font-family: twinkle-sunday, sans-serif;
     text-transform: uppercase;
-    letter-spacing: 1.9px;
-    color: white;
+    letter-spacing: 3px;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
     font-weight: bold;
     text-decoration: none;
     padding: 15px 20px;
-    background-color: rgba(240, 255, 255, 0.276); /* Bakgrund för inaktiva länkar */
+    background-color: rgba(240, 255, 255, 0.583); /* Bakgrund för inaktiva länkar */
     display: flex;
     align-items: center;
     border-radius: 10px 10px 0 0;
@@ -97,12 +129,13 @@ p {
 #mainMenu ul li.current a {
     position: relative;
     z-index: 1;
-    background-color: rgba(1, 56, 85, 0.276); /* Bakgrund för inaktiva länkar */
+    background-color: rgba(0, 0, 0, 0.520);
     backdrop-filter: blur(3px); /* Samma blur som contentBg */
     -webkit-backdrop-filter: blur(3px); /* För webkit-baserade webbläsare */
     border: 2px solid  rgba(255, 255, 255, 0.361);
     border-bottom: none; /* Ta bort streck under aktiv länk */
     transform: translateY(2px);
+    color: rgb(255, 255, 255);
 }
 
 
@@ -118,3 +151,117 @@ p {
     z-index: -1; /* Sätt bakom innehåll */
 }
 
+.gridContainer {
+    display: grid;
+    gap: 10px 100px;
+}
+
+.bucketGrid {
+    grid-column: 1 / 5;
+    display: grid;
+    overflow-y: scroll;
+
+}
+
+.bucketlistPrio1 {
+    grid-row: 1 / 2;
+}
+
+.bucketlistPrio1 h2 {
+    color: #FFD1B3;
+    text-shadow: 0px 0px 5px rgba(255,209,179,0.8);
+}
+
+.bucketlistPrio2 {
+    grid-row: 2 / 3;
+}
+
+.bucketlistPrio2 h2 {
+    color: #B3FFFA;
+    text-shadow: 0px 0px 5px rgba(179,255,250,0.8);
+}
+
+.bucketlistPrio3 {
+    grid-row: 3 / 4;
+}
+
+.bucketlistPrio3 h2 {
+    color: #B3CCFF;
+    text-shadow: 0px 0px 5px rgba(179,204,255,0.8);
+}
+
+.bucketform {
+    grid-column: 5 / 6;
+    grid-row: 1 / 4;
+    display: flex;
+    flex-direction: column;
+    font-family: "Red Hat Text", sans-serif;
+    line-height: 1.4;
+    letter-spacing: 0.7px;
+    align-self: center;
+}
+
+label {
+    margin: 20px 0 5px 0;
+    color: #fff;
+    margin-left: 5px;
+    font-family: twinkle-sunday, sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+input, select, option {
+    padding: 8px 5px;
+    border-radius: 7px;
+    border: none;
+    box-shadow: 0px 0px 10px rgb(229, 227, 228), 0px 0px 50px rgba(200, 196, 198, 0.6);
+    font-family: twinkle-sunday, sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+
+input[type=submit] {
+    margin-top: 40px;
+    background-color: #B3FFB3;
+    border: none;
+    border-radius: 10px; /* Rundade hörn för att ge knappen en mjukare känsla */
+    padding: 15px 30px; /* Öka padding för att göra knappen större och mer inbjudande */
+    font-weight: bold;
+    color: #333; /* Mörk text för bättre kontrast */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smidig övergång för alla förändringar */
+    box-shadow: 0px 0px 20px rgba(179, 255, 179, 0.8), 0px 0px 30px rgba(179, 255, 179, 0.6); /* Lägg till fler skuggor för en starkare glöd */
+    display: inline-flex; /* För att lägga ikonen och texten på samma linje */
+    align-items: center; /* Vertikal centrering av text och ikon */
+}
+
+input[type=submit]:hover {
+    background-color: #FFCCE5;
+    box-shadow: 0px 0px 30px rgba(255, 204, 229, 1), 0px 0px 50px rgba(255, 204, 229, 0.6); /* Större och mer intensiv skugga vid hover */
+    transform: scale(1.1); /* Gör knappen något större vid hover för en mer "levande" känsla */
+}
+
+table {
+    color: #fff;
+    font-family: twinkle-sunday, sans-serif;
+    font-size: 22px;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    background-color: #333333b0;
+    width: 100%;
+    justify-content: center;
+}
+
+footer p {
+    margin: 0 10px;
+    font-family: "Red Hat Text", sans-serif;
+    font-size: 16px;
+}
