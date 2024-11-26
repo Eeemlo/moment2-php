@@ -25,6 +25,8 @@ include("includes/mainmenu.php");
 </section>
 <p>Liote text här...</p>
 
+
+
 <?php
 include("includes/footer.php");
 ?>
