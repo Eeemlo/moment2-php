@@ -2,18 +2,29 @@
 $title = 'Hem';
 include('includes/mainmenu.php');
 
+//Instansiera ett nytt bucketlist objekt
+$bucketlist = new Bucketlist(); 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Kontrollera om alla fält är satta och inte tomma
-    if (
+    // Om delete knapp är tryckt
+    if (isset($_POST['delete'])) {
+        // Hämta bucket-id från formuläret
+        $bucketId = $_POST['bucket_id'];
+
+        // Anropa deleteBucket-funktionen
+        if ($bucketlist->deleteBucket($bucketId)) {
+            echo "Bucket raderades!";
+        } else {
+            echo "Fel vid radering av bucket.";
+        }
+    }
+    // Annars, om det är en formulär för att lägga till en bucket
+    elseif (
         isset($_POST['name'], $_POST['description'], $_POST['priority']) &&
         !empty($_POST['name']) &&
         !empty($_POST['description']) &&
         !empty($_POST['priority'])
     ) {
-
-        // Skapa ett nytt Bucketlist-objekt
-        $bucketlist = new Bucketlist();
-
         // Hämta värden från formuläret
         $name = $_POST['name'];
         $description = $_POST['description'];
@@ -33,18 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Please fill in all fields!";
     }
 }
-
-if (isset($_POST['delete'])) {
-    // Hämta bucket-id från formuläret
-    $bucketId = $_POST['bucket_id'];
-
-    // Anropa deleteBucket-funktionen
-    if ($bucketlist->deleteBucket($bucketId)) {
-        echo "Bucket raderades!";
-    } else {
-        echo "Fel vid radering av bucket.";
-    }
-}
+?>
 
 ?>
 
@@ -69,8 +69,6 @@ if (isset($_POST['delete'])) {
 
 </div>
 
-<?php $bucketlist = new Bucketlist(); ?>
-
 <div class='gridContainer'>
     <?php
     $showModal = isset($_GET['showModal']) && $_GET['showModal'] == 'true';
@@ -91,10 +89,15 @@ if (isset($_POST['delete'])) {
                 // Formatera created_at till endast datum (YYYY-MM-DD)
                 $formattedDate = date('Y-m-d', strtotime($bucket['created_at']));
 
-                echo "<article>
+                echo "<article class='buckets'>
                     <strong>" . htmlspecialchars($bucket['name']) . "</strong>
                     <p class='pSmall'>Tillagd: " . htmlspecialchars($formattedDate) . "</p>
                     <p>" . htmlspecialchars($bucket['description']) . "</p>
+
+                    <form method='POST' action='bucketlist.php'>
+                        <input type='hidden' name='bucket_id' value='" . $bucket['id'] . "'>
+                        <button type='submit' name='delete' class='btn' id='deleteBtn'>&times;</button>
+                    </form>
                     </article>";
             }
             ?>
@@ -113,10 +116,15 @@ if (isset($_POST['delete'])) {
                 // Formatera created_at till endast datum (YYYY-MM-DD)
                 $formattedDate = date('Y-m-d', strtotime($bucket['created_at']));
 
-                echo "<article>
+                echo "<article class='buckets'>
                     <strong>" . htmlspecialchars($bucket['name']) . "</strong>
                     <p class='pSmall'>Tillagd: " . htmlspecialchars($formattedDate) . "</p>
                     <p>" . htmlspecialchars($bucket['description']) . "</p>
+                    
+                    <form method='POST' action='bucketlist.php'>
+                        <input type='hidden' name='bucket_id' value='" . $bucket['id'] . "'>
+                        <button type='submit' name='delete' class='btn' id='deleteBtn'>&times;</button>
+                    </form>
                     </article>";
             }
 
@@ -136,16 +144,15 @@ if (isset($_POST['delete'])) {
                 // Formatera created_at till endast datum (YYYY-MM-DD)
                 $formattedDate = date('Y-m-d', strtotime($bucket['created_at']));
 
-                echo "<article>
+                echo "<article class='buckets'>
                     <strong>" . htmlspecialchars($bucket['name']) . "</strong>
                     <p class='pSmall'>Tillagd: " . htmlspecialchars($formattedDate) . "</p>
                     <p>" . htmlspecialchars($bucket['description']) . "</p>
 
-                       <!-- Använda en <button> istället för <input> -->
-    <form method='POST' action='bucketlist.php'>
-        <input type='hidden' name='bucket_id' value='" . $bucket['id'] . "'>
-        <button type='submit' name='delete'>Radera</button>
-    </form>
+                    <form method='POST' action='bucketlist.php'>
+                        <input type='hidden' name='bucket_id' value='" . $bucket['id'] . "'>
+                        <button type='submit' name='delete' class='btn' id='deleteBtn'>&times;</button>
+                    </form>
                     </article>";
             }
 
