@@ -1,3 +1,4 @@
+/*Reset elements*/
 *,
 *::before,
 *::after {
@@ -5,6 +6,7 @@
     margin: 0;
 }
 
+/*Import fonts*/
 @font-face {
     font-family: shooting-star;
     src: url(shooting-star.ttf);
@@ -15,6 +17,7 @@
     src: url(FabeloKids-Regular.ttf);
   }
 
+  /*set background*/
 .bg, .contentBg {
     background-image: url("../images/space-bg-small.jpg");
     background-repeat: no-repeat;
@@ -22,6 +25,7 @@
     position: relative;
 }
 
+/*position background*/
 .bg {
     background-position: center top;
     height: 100vh;
@@ -35,6 +39,7 @@
     position: relative;
 }
 
+/*create blurry background for content*/
 .contentBg {
     position: absolute;
     top: 0;
@@ -47,6 +52,7 @@
     filter: blur(14px);
 }
 
+/*content container*/
 .content {
     border: 2px solid rgba(255, 255, 255, 0.361);
     border-radius: 10px;
@@ -61,12 +67,14 @@
     overflow-y: scroll;
 }
 
+/*change width of content on screens smaller than 1200px*/
 @media screen and (max-width: 1200px) {
     .content {
         width: 99vw;
     }
 }
 
+/*header1 settings*/
 h1 {
     color: rgb(255, 255, 255);
     font-family: shooting-star, sans-serif;
@@ -75,7 +83,7 @@ h1 {
     justify-self: center;
 }
 
-
+/*header2 settings*/
 h2 {
     font-family: twinkle-sunday, sans-serif;
     font-size: 36px;
@@ -87,7 +95,7 @@ h2 {
     margin-bottom: 10px;
 }
 
-
+/*text settings*/
 p, strong, .pLi {
     color: rgba(255, 255, 255, 0.853);
     font-family: twinkle-sunday, sans-serif;
@@ -109,7 +117,7 @@ strong {
     font-size: 12px;
 }
 
-/* Huvudmeny */
+/*main menu*/
 #mainMenu ul {
     list-style-type: none;
     display: flex;
@@ -117,11 +125,11 @@ strong {
 }
 
 #mainMenu ul li {
-    position: relative; /* Gör så att vi kan positionera pseudo-element */
+    position: relative; 
     margin: 0 2px;
 }
 
-/* Inaktiva länkar */
+/*inactive menu links*/
 #mainMenu ul li a {
     font-family: twinkle-sunday, sans-serif;
     text-transform: uppercase;
@@ -131,16 +139,16 @@ strong {
     font-weight: bold;
     text-decoration: none;
     padding: 15px 20px;
-    background-color: rgba(240, 255, 255, 0.583); /* Bakgrund för inaktiva länkar */
+    background-color: rgba(240, 255, 255, 0.583); 
     display: flex;
     align-items: center;
     border-radius: 10px 10px 0 0;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.361); /* Streck under inaktiva länkar */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.361); 
     transform: translateY(2px);
 }
 
-/* Aktiva länkar */
+/*active menu links*/
 #mainMenu ul li.current a {
     position: relative;
     z-index: 1;
@@ -154,40 +162,42 @@ strong {
 }
 
 
-/* För att ta bort border-top under aktiva länken, använd positionering */
+/*pseudo menu links*/
 #mainMenu ul li.current a::before {
     content: "";
     position: absolute;
-    top: -3px; /* Justera så att det inte overlappar */
+    top: -3px; 
     left: 0;
     right: 0;
-    height: 3px; /* Höjd på border */
-    background-color: transparent; /* Gör så att det blir osynligt */
-    z-index: -1; /* Sätt bakom innehåll */
+    height: 3px; 
+    background-color: transparent; 
+    z-index: -1; 
 }
 
+/*index.php text*/
 .reflections, .aboutAssignment {
     max-width: 800px;
     margin: 0 auto;
 }
 
+/*index.php text headings*/
 .reflections h2, .aboutAssignment h2 {
     text-align: center;
 }
 
+/*position elements in content bucketlist.php*/
 .gridContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+/*apply scroll*/
 .bucketGrid {
     overflow-y: scroll;
-
 }
 
-
-
+/*design flex elements in content in bucketlist.php*/
 .bucketlistPrio1 h2 {
     color: #FFD1B3;
     text-shadow: 0px 0px 5px rgba(255,209,179,0.8);
@@ -208,6 +218,7 @@ strong {
     justify-self: center;
 }
 
+/*settings for each bucket*/
 .buckets {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -239,7 +250,7 @@ strong {
     justify-self: left;
 }
 
-
+/*bucket delete button*/
 .buckets form {
     grid-column: 2 / 3;
     grid-row: 1 / 3;
@@ -248,37 +259,37 @@ strong {
 }
 
 
-/* The Modal (background) */
+/*the modal to add buckets*/
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Fix position to the screen */
-    z-index: 1; /* Sit on top */
-    top: 0; /* Align to top of the screen */
-    left: 0; /* Align to left of the screen */
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgba(0, 0, 0, 0.665); /* Black w/ opacity */
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.665); 
     border-radius: 12px;
-    display: flex; /* Enable flexbox */
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     padding: 10px;
   }
   
-  /* Modal Content/Box */
+  /*modal content/box*/
   .modalContent {
     background-color: #1e1e1e;
     padding: 20px;
     border: 1px solid #888;
-    max-width: 600px; /* Max width */
-    max-height: 600px; /* Max height */
-    width: 100%; /* Could be more or less, depending on screen size */
-    border-radius: 12px; /* Optional for rounded corners */
+    max-width: 600px; 
+    max-height: 600px; 
+    width: 100%; 
+    border-radius: 12px; 
     margin: 10% auto 20px;
   }
 
   
-  /* The Close Button */
+  /*the modal close button*/
   .close {
     color: #aaa;
     float: right;
@@ -309,6 +320,7 @@ strong {
     margin-top: 40px;
   }
 
+  /*modal button settings on smaller screens*/
   @media screen and (max-width: 1060px) {
     #modalBtn {
     margin-top: 10px;
@@ -317,6 +329,7 @@ strong {
     }
   }
 
+  /*modal content*/
   form {
     display: flex;
     flex-direction: column;
@@ -366,6 +379,7 @@ input, select, option, textarea {
     transform: scale(1.1); /* Gör knappen något större vid hover för en mer "levande" känsla */
 }
 
+/*delete button for each bucket*/
 #deleteBtn {
     display: flex;
     font-weight: 300;
@@ -385,13 +399,7 @@ input, select, option, textarea {
     box-shadow: 0px 0px 30px rgba(179, 255, 179, 0.8), 0px 0px 50px rgba(179, 255, 179, 0.6);
 }
 
-table {
-    color: #fff;
-    font-family: twinkle-sunday, sans-serif;
-    font-size: 22px;
-}
-
-
+/*footer settings*/
 footer {
     position: absolute;
     bottom: 0;
@@ -407,7 +415,7 @@ footer p {
     font-size: 16px;
 }
 
-/*General media query*/
+/*general media queries*/
 
 @media screen and (max-width: 835px) {
     .content {

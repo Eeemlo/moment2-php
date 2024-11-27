@@ -17,27 +17,28 @@
 <body>
     
 <?php
-// Array of pages
+
+/*array of pages*/
 $pages = array(
     "index.php" => "Hem",
     "bucketlist.php" => "Bucketlist"
 );
 ?>
 
-<!--Container used to apply bg-image-->
+<!--container used to apply bg-image-->
 <div class="bg">
 
-<!--Main menu nav-links-->
+<!--main menu nav-links-->
 <header>
 <nav id="mainMenu">
     <ul>
         <?php
-        // Loop through array of pages
+        /*Loop through array of pages*/
         foreach ($pages as $url => $title) {
-            // Check if page is active
+            /*Check if page is active*/
             $current = basename($_SERVER["SCRIPT_FILENAME"]);
 
-            // Echo a link for each page and check if active
+            /*Echo a link for each page and check if active*/
             if ($url == $current) {
                 echo "<li class='current'><a href='$url'>$title</a></li>";
             } else {

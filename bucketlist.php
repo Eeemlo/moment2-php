@@ -2,40 +2,40 @@
 $title = 'Hem';
 include('includes/mainmenu.php');
 
-//Instansiera ett nytt bucketlist objekt
-$bucketlist = new Bucketlist(); 
+/*Initialize a new bucketlist objct*/
+$bucketlist = new Bucketlist();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Om delete knapp är tryckt
+    /*Check if delete button is activated*/
     if (isset($_POST['delete'])) {
-        // Hämta bucket-id från formuläret
+        // Get bucket ID from form checkbox
         $bucketId = $_POST['bucket_id'];
 
-        // Anropa deleteBucket-funktionen
+        // Call deleteBucket method
         if ($bucketlist->deleteBucket($bucketId)) {
             echo "Bucket raderades!";
         } else {
             echo "Fel vid radering av bucket.";
         }
     }
-    // Annars, om det är en formulär för att lägga till en bucket
-    elseif (
+
+    /*Else, if the add new bucket-button is active*/ elseif (
         isset($_POST['name'], $_POST['description'], $_POST['priority']) &&
         !empty($_POST['name']) &&
         !empty($_POST['description']) &&
         !empty($_POST['priority'])
     ) {
-        // Hämta värden från formuläret
+        // Get values from form
         $name = $_POST['name'];
         $description = $_POST['description'];
-        $priority = $_POST['priority']; // Vi kontrollerar att detta inte är null
+        $priority = $_POST['priority'];
 
         // Lägg till bucket i databasen
         $result = $bucketlist->addBucket($name, $description, $priority);
 
         if ($result) {
             echo "Bucket added successfully!";
-            header('Location: ' . $_SERVER['PHP_SELF']); // Omdirigera för att förhindra formuläråterställning
+            header('Location: ' . $_SERVER['PHP_SELF']); // Redirect to prevent form to reset
             exit;
         } else {
             echo "Failed to add bucket.";
@@ -46,8 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-?>
-
+<!--Bucketlist page header-->
 <div class='container'>
     <h1>
         <span style='color:#FFCCFF; text-shadow: 0px 0px 8px rgba(255,204,255,0.8);'>M</span>
@@ -66,27 +65,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <span style='color:#FFE0B3; text-shadow: 0px 0px 8px rgba(255,224,179,0.8);'>s</span>
         <span style='color:#FFB3FF; text-shadow: 0px 0px 8px rgba(255,179,255,0.8);'>t</span>
     </h1>
-
 </div>
 
+<!--container to hold content-->
 <div class='gridContainer'>
+
+    <!--PHP to check if showModal is set to true-->
     <?php
     $showModal = isset($_GET['showModal']) && $_GET['showModal'] == 'true';
     ?>
 
+    <!--Button to show modal-->
     <a href="?showModal=true" id="modalBtn" class="btn">Lägg till bucket</a>
 
+    <!--Container to place bucketlist-->
     <div class='bucketGrid'></div>
     <section class='bucketlistPrio1'>
         <div>
             <h2>Högsta prioritet</h2>
         </div>
         <div>
+            <!--PHP to get prio 1 buckets-->
             <?php
             $buckets = $bucketlist->getPrio1Buckets();
 
+            //Loop through buckets
             foreach ($buckets as $bucket) {
-                // Formatera created_at till endast datum (YYYY-MM-DD)
+                // Remove time from datetime
                 $formattedDate = date('Y-m-d', strtotime($bucket['created_at']));
 
                 echo "<article class='buckets'>
@@ -109,11 +114,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2>Medelhög prioritet</h2>
         </div>
         <div>
+            <!--PHP to get prio 2 buckets-->
             <?php
             $buckets = $bucketlist->getPrio2Buckets();
 
+            //Loop through buckets
             foreach ($buckets as $bucket) {
-                // Formatera created_at till endast datum (YYYY-MM-DD)
+                // Remove time from datetime
                 $formattedDate = date('Y-m-d', strtotime($bucket['created_at']));
 
                 echo "<article class='buckets'>
@@ -137,11 +144,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h2>Låg prioritet</h2>
         </div>
         <div>
+            <!--PHP to get prio 3 buckets-->
             <?php
             $buckets = $bucketlist->getPrio3Buckets();
 
+            //Loop through buckets
             foreach ($buckets as $bucket) {
-                // Formatera created_at till endast datum (YYYY-MM-DD)
+                // Remove time to datetime
                 $formattedDate = date('Y-m-d', strtotime($bucket['created_at']));
 
                 echo "<article class='buckets'>

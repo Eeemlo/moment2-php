@@ -3,6 +3,7 @@ $title = "Hem";
 include("includes/mainmenu.php");
 ?>
 
+<!--index.php heading-->
 <h1>
     <span style="color:#FFB3B3; text-shadow: 0px 0px 8px rgba(255,179,179,0.8);">M</span>
     <span style="color:#B3FFB3; text-shadow: 0px 0px 8px rgba(179,255,179,0.8);">o</span>
@@ -20,6 +21,7 @@ include("includes/mainmenu.php");
     <span style="color:#B3FFFA; text-shadow: 0px 0px 8px rgba(179,255,250,0.8);">G</span>
 </h1>
 
+<!--Aboput the assignment-->
 <section class="aboutAssignment">
     <h2>Om uppgiften</h2>
     <p>Målet med uppgiften var att utveckla en webbplats i PHP som inkluderar en interaktiv bucketlist. På denna
@@ -36,6 +38,7 @@ include("includes/mainmenu.php");
         sätt.</p>
 </section>
 
+<!--My reflections-->
 <section class="reflections">
     <h2>Mina reflektioner kring PHP</h2>
     <p>Jag hade höga förväntningar på PHP som programmeringsspråk, men känner att dessa inte riktigt har infriats. Jag
