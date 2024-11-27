@@ -88,12 +88,16 @@ h2 {
 }
 
 
-p, strong {
+p, strong, .pLi {
     color: rgba(255, 255, 255, 0.853);
     font-family: twinkle-sunday, sans-serif;
     font-size: 22px;
     line-height: 1.4;
     letter-spacing: 0.7px;
+}
+
+.pUl {
+    margin: 15px 0;
 }
 
 strong {
@@ -160,6 +164,15 @@ strong {
     height: 3px; /* Höjd på border */
     background-color: transparent; /* Gör så att det blir osynligt */
     z-index: -1; /* Sätt bakom innehåll */
+}
+
+.reflections, .aboutAssignment {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.reflections h2, .aboutAssignment h2 {
+    text-align: center;
 }
 
 .gridContainer {
@@ -416,7 +429,7 @@ footer p {
     }
 
     h2 {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     #mainMenu ul li a {
@@ -429,7 +442,7 @@ footer p {
     }
 
     strong, p {
-        font-size: 16px;
+        font-size: 20px;
     }
 
 
