@@ -5,6 +5,7 @@ $siteName = "Emma's Bucketlist";
 /*Apply false before publishing*/
 $devMode = true;
 
+
 if ($devMode) {
     /*Activate error messages*/
     error_reporting(-1);
@@ -24,10 +25,10 @@ if ($devMode) {
     define("DBDATABASE", "wordpress1");
 } else {
     // Deployed database settings
-    define("DBHOST", "localhost");
-    define("DBUSER", "catshow");
-    define("DBPASS", "password");
-    define("DBDATABASE", "catshow");
+    define("DBHOST", "");
+    define("DBUSER", "");
+    define("DBPASS", "");
+    define("DBDATABASE", "");
 }
 
 

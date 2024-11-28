@@ -20,7 +20,7 @@ if($db->connect_error) {
 
     /*Send SQL query to server*/
     if ($db->multi_query($sql)) {
-    
+        echo "Table created.";
     } else {
         echo "Error creating table.";
     }

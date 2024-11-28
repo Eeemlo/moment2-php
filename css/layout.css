@@ -27,6 +27,7 @@
 
 /*position background*/
 .bg {
+    background-size: cover;
     background-position: center top;
     height: 100vh;
     display: flex;
@@ -230,6 +231,7 @@ strong {
     border-radius: 10px;
     padding: 10px 20px;
     background-color: #00000089;
+    margin: 10px 0;
 }
 
 .buckets strong {

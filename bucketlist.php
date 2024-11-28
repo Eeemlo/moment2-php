@@ -34,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $bucketlist->addBucket($name, $description, $priority);
 
         if ($result) {
-            echo "Bucket added successfully!";
             header('Location: ' . $_SERVER['PHP_SELF']); // Redirect to prevent form to reset
             exit;
         } else {
